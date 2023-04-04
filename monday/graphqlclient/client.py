@@ -7,6 +7,7 @@ class GraphQLClient:
         self.endpoint = endpoint
         self.token = None
         self.headername = None
+        self.session = requests.Session()
 
     def execute(self, query, variables=None):
         return self._send(query, variables)
@@ -31,9 +32,8 @@ class GraphQLClient:
             files = [
                 ('variables[file]', (variables['file'], open(variables['file'], 'rb')))
             ]
-
         try:
-            response = requests.request("POST", self.endpoint, headers=headers, data=payload, files=files)
+            response = self.session.request("POST", self.endpoint, headers=headers, data=payload, files=files)
             response.raise_for_status()
             return response.json()
         except requests.HTTPError as e:
