@@ -101,7 +101,8 @@ def get_item_by_id_query(ids):
                 column_values {
                     id,
                     text,
-                    value
+                    value,
+                    type
                 }
             }
         }''' % ids
