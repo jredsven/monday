@@ -320,7 +320,7 @@ def get_board_items_query(board_id: Union[str, int], limit: Optional[int] = None
     return query
 
 
-def get_boards_query(limit: int = None, page: int = None, ids: List[int] = None, board_kind: BoardKind = None, state: BoardState = None, order_by: BoardsOrderBy = None):
+def get_boards_query(limit: int = None, page: int = None, ids: List[int] = None, board_kind: BoardKind = None, state: BoardState = None, order_by: BoardsOrderBy = None, workspace_ids: List[int] = None):
     parameters = locals().items()
     query_params = []
     for k, v in parameters:

@@ -14,8 +14,8 @@ class BoardResource(BaseResource):
     def __init__(self, token):
         super().__init__(token)
 
-    def fetch_boards(self, limit: int = None, page: int = None, ids: List[int] = None, board_kind: BoardKind = None, state: BoardState = None, order_by: BoardsOrderBy = None):
-        query = get_boards_query(limit, page, ids, board_kind, state, order_by)
+    def fetch_boards(self, limit: int = None, page: int = None, ids: List[int] = None, board_kind: BoardKind = None, state: BoardState = None, order_by: BoardsOrderBy = None, workspace_ids: List[int] = None):
+        query = get_boards_query(limit, page, ids, board_kind, state, order_by, workspace_ids)
         return self.client.execute(query)
 
     def fetch_boards_by_id(self, board_ids):
